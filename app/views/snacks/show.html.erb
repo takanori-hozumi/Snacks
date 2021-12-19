@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+  <p>
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+<h2>商品名</h2>
+<%= @snack.title %>
+<h2>カテゴリー</h2>
+<%= @snack.category %>
+<h2>商品説明</h2>
+<%= @snack.body %>
+<br></br>
+<%= link_to "Edit", edit_snack_path(@snack) %>
+<%= link_to "Back", snacks_path %>

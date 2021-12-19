@@ -1,0 +1,51 @@
+<h3>Snack</h3>
+<table>
+  <thead>
+    <tr>
+      <th>title<th>
+      <th>category</th>
+      <th>body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @snacks.each do |snack| %>
+    <tr>
+      <td>
+        <%= snack.title %>
+      </td>
+      <td>
+        <%= snack.category %>
+      </td>
+      <td>
+        <%= snack.body %>
+      </td>
+      <td>
+        <%= link_to "Show", snack_path(snack) %>
+        <%= link_to "Edit", edit_snack_path(snack) %>
+        <%= link_to "Delete", snack_path(snack), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h4>New Snack</h4>
+
+<% if @snack.errors.any? %>
+  <%= @snack.errors.count %>errors prohibited this snack from being save:
+  <% @snack.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<%= form_with model: @snack, local: true do |f| %>
+  <h5>商品名</h5>
+  <%= f.text_field :title %>
+  <h5>カテゴリー</h5>
+  <%= f.text_field :category %>
+  <h5>商品説明</h5>
+  <%= f.text_area :body %>
+  <br><%= f.submit "Create Snack" %></br>
+<% end %>
+

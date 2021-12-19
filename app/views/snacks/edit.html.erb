@@ -1,0 +1,13 @@
+<h2>商品説明変更等</h2>
+<%= form_with model: @snack, local: true do |f| %>
+  <h4>商品名</h4>
+  <%= f.text_field :title %>
+  <h4>カテゴリー</h4>
+  <%= f.text_field :category %>
+  <h4>商品説明</h4>
+  <%= f.text_area :body %>
+  <br><%= f.submit "Update snack" %></br>
+<% end %>
+
+<%= link_to "Show", snack_path(@snack) %>
+<%= link_to "Back", snacks_path %>
