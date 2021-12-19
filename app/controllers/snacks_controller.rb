@@ -1,6 +1,7 @@
 class SnacksController < ApplicationController
   def index
     @snacks = Snack.all
+    @snack = Snack.new
   end
 
   def show
@@ -13,7 +14,7 @@ class SnacksController < ApplicationController
 
   def create
     @snack = Snack.new(snack_params)
-    if @snack.save!
+    if @snack.save
       flash[:notice] = "Snack was successfully created."
       redirect_to snack_path(@snack.id)
     else
@@ -28,7 +29,7 @@ class SnacksController < ApplicationController
   def update
     snack = Snack.find(params[:id])
     if flash[:notice] = "Snack was successfully created."
-      snack.update!(snack_params)
+      snack.update(snack_params)
       redirect_to snack_path(snack)
     else
       render :edit

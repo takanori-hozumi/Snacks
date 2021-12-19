@@ -9,6 +9,7 @@
   </thead>
 
   <tbody>
+  <% if @snacks.present? %>
   <% @snacks.each do |snack| %>
     <tr>
       <td>
@@ -26,6 +27,7 @@
         <%= link_to "Delete", snack_path(snack), method: :delete %>
       </td>
     </tr>
+  <% end %>
   <% end %>
   </tbody>
 </table>
@@ -48,4 +50,3 @@
   <%= f.text_area :body %>
   <br><%= f.submit "Create Snack" %></br>
 <% end %>
-
