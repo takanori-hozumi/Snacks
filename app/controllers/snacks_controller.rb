@@ -8,16 +8,13 @@ class SnacksController < ApplicationController
     @snack = Snack.find(params[:id])
   end
 
-  def new
-    @snack = Snack.new
-  end
-
   def create
     @snack = Snack.new(snack_params)
     if @snack.save
       flash[:notice] = "Snack was successfully created."
       redirect_to snack_path(@snack.id)
     else
+      @snacks = Snack.all
       render :index
     end
   end
